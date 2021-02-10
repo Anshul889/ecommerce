@@ -3,12 +3,9 @@ import styled from 'styled-components'
 import Menuitemc from '../../components/Menuitem/Menuitemc'
 
 const Home = styled.div`
-  padding: 20px 80px;
-  @media (max-width: 768px) {
-    padding: 20px 0;
-    width: 90%;
-    margin: 0 auto;
-  }
+  width: 90%;
+  max-width: 1080px;
+  margin: 20px auto;
 `
 
 const Directorymenu = styled.div`
@@ -21,18 +18,20 @@ const Directorymenu = styled.div`
   }
 `
 
-
-
 const Homepage = () => {
   return (
     <Home>
       <Directorymenu>
-        <Menuitemc imageUrl={'https://source.unsplash.com/600x600/?hat'}/>
-        <Menuitemc imageUrl={'https://source.unsplash.com/600x600/?jackets'}/>
-        <Menuitemc imageUrl={'https://source.unsplash.com/600x600/?sneakers'}/>
-        <Menuitemc imageUrl={'https://source.unsplash.com/600x600/?fashion'}/>
-        <Menuitemc imageUrl={'https://source.unsplash.com/600x600/?mens,fashion'}/>
-      </Directorymenu >
+        <Menuitemc imageUrl={'https://source.unsplash.com/400x400/?hat'} />
+        <Menuitemc imageUrl={'https://source.unsplash.com/400x400/?jackets'} />
+        <Menuitemc imageUrl={'https://source.unsplash.com/400x400/?sneakers'} />
+        <Menuitemc
+          imageUrl={'https://source.unsplash.com/600x600/?woman,fashion'}
+        />
+        <Menuitemc
+          imageUrl={'https://source.unsplash.com/600x600/?man,fashion'}
+        />
+      </Directorymenu>
     </Home>
   )
 }
