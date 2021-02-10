@@ -1,7 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import Logo from '../../../assets/crown.svg'
+import Home from '../../../assets/home.svg'
+import Cart from '../../../assets/shopping-cart.svg'
+import User from '../../../assets/user-circle.svg'
+import Heart from '../../../assets/heart.svg'
 
 const Wrapper = styled.div``
 
@@ -68,14 +72,28 @@ const BottomNav = styled.div`
 
 const BottomNavItem = styled.div`
   display: grid;
+  height: 100%;
 `
 
 const BottomImage = styled.img`
-  width: 100%;
+  width: 22px;
+  justify-self: center;
+  padding-top: 8px;
 `
 const BottomText = styled.div`
   font-size: 12px;
   text-align: center;
+`
+
+const activeClassName = 'nav-item-active'
+
+const StyledLink = styled(NavLink).attrs({ activeClassName })`
+  text-decoration: none;
+  opacity: 0.7;
+  color: black;
+  &.${activeClassName} {
+    opacity: 1;
+  }
 `
 
 const Header = () => {
@@ -96,24 +114,30 @@ const Header = () => {
         </RightNav>
       </Nav>
       <BottomNav>
+        <StyledLink exact to='/'>
+          <BottomNavItem>
+            <BottomImage src={Home} />
+            <BottomText>Home</BottomText>
+          </BottomNavItem>
+        </StyledLink>
+        <StyledLink exact to='/shop'>
+          <BottomNavItem>
+            <BottomImage src={Home} />
+            <BottomText>Shop</BottomText>
+          </BottomNavItem>
+        </StyledLink>
+        <StyledLink exact to='/wishlist'>
         <BottomNavItem>
-          <BottomImage />
-          <BottomText>Home</BottomText>
+          <BottomImage src={Heart} />
+          <BottomText>Wishlist</BottomText>
         </BottomNavItem>
+        </StyledLink>
         <BottomNavItem>
-          <BottomImage />
-          <BottomText>Shop</BottomText>
-        </BottomNavItem>
-        <BottomNavItem>
-          <BottomImage />
-          <BottomText>Contact</BottomText>
-        </BottomNavItem>
-        <BottomNavItem>
-          <BottomImage />
+          <BottomImage src={Cart} />
           <BottomText>Cart</BottomText>
         </BottomNavItem>
         <BottomNavItem>
-          <BottomImage />
+          <BottomImage src={User} />
           <BottomText>Login</BottomText>
         </BottomNavItem>
       </BottomNav>
