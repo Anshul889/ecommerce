@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import Logo from '../../../assets/crown.svg'
-import Home from '../../../assets/home.svg'
-import Cart from '../../../assets/shopping-cart.svg'
-import User from '../../../assets/user-circle.svg'
-import Heart from '../../../assets/heart.svg'
+import Logo from '../../assets/crown.svg'
+import Home from '../../assets/home.svg'
+import Cart from '../../assets/shopping-cart.svg'
+import User from '../../assets/user-circle.svg'
+import Heart from '../../assets/heart.svg'
 
 const Wrapper = styled.div``
 
@@ -44,7 +44,7 @@ const RightNav = styled.div`
   justify-self: end;
   display: grid;
   grid-template-columns: max-content max-content max-content max-content;
-  grid-gap: 10px;
+  grid-gap: 15px;
   align-content: center;
   font-size: 24px;
   padding-right: 10px;
@@ -89,10 +89,15 @@ const activeClassName = 'nav-item-active'
 
 const StyledLink = styled(NavLink).attrs({ activeClassName })`
   text-decoration: none;
-  opacity: 0.7;
   color: black;
   &.${activeClassName} {
-    opacity: 1;
+      font-weight: bold;
+    }
+  @media (max-width: 768px) {
+    opacity: 0.7;
+    &.${activeClassName} {
+      opacity: 1;
+    }
   }
 `
 
@@ -107,10 +112,18 @@ const Header = () => {
           <Title>Crown Clothing</Title>
         </LeftNav>
         <RightNav>
-          <RightNavItem>Shop</RightNavItem>
-          <RightNavItem>Contact</RightNavItem>
-          <RightNavItem>Sign In</RightNavItem>
-          <RightNavItem>Cart</RightNavItem>
+          <StyledLink exact to='/shop'>
+            <RightNavItem>Shop</RightNavItem>
+          </StyledLink>
+          <StyledLink exact to='/contact'>
+            <RightNavItem>Contact</RightNavItem>
+          </StyledLink>
+          <StyledLink exact to='/signin'>
+            <RightNavItem>Sign In</RightNavItem>
+          </StyledLink>
+          <StyledLink exact to='/cart'>
+            <RightNavItem>Cart</RightNavItem>
+          </StyledLink>
         </RightNav>
       </Nav>
       <BottomNav>
@@ -127,19 +140,23 @@ const Header = () => {
           </BottomNavItem>
         </StyledLink>
         <StyledLink exact to='/wishlist'>
-        <BottomNavItem>
-          <BottomImage src={Heart} />
-          <BottomText>Wishlist</BottomText>
-        </BottomNavItem>
+          <BottomNavItem>
+            <BottomImage src={Heart} />
+            <BottomText>Wishlist</BottomText>
+          </BottomNavItem>
         </StyledLink>
-        <BottomNavItem>
-          <BottomImage src={Cart} />
-          <BottomText>Cart</BottomText>
-        </BottomNavItem>
-        <BottomNavItem>
-          <BottomImage src={User} />
-          <BottomText>Login</BottomText>
-        </BottomNavItem>
+        <StyledLink exact to='/cart'>
+          <BottomNavItem>
+            <BottomImage src={Cart} />
+            <BottomText>Cart</BottomText>
+          </BottomNavItem>
+        </StyledLink>
+        <StyledLink exact to='/signin'>
+          <BottomNavItem>
+            <BottomImage src={User} />
+            <BottomText>Login</BottomText>
+          </BottomNavItem>
+        </StyledLink>
       </BottomNav>
     </Wrapper>
   )

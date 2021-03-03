@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PreviewCollection from '../../components/Menuitem/previewcollection/PreviewCollection'
+import PreviewCollection from '../../components/previewcollection/PreviewCollection'
 
 class ShopPage extends Component {
   state = {
