@@ -91,8 +91,8 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   text-decoration: none;
   color: black;
   &.${activeClassName} {
-      font-weight: bold;
-    }
+    font-weight: bold;
+  }
   @media (max-width: 768px) {
     opacity: 0.7;
     &.${activeClassName} {
@@ -101,7 +101,7 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   }
 `
 
-const Header = () => {
+const Header = ({ currentUser }) => {
   return (
     <Wrapper>
       <Nav>
@@ -112,46 +112,53 @@ const Header = () => {
           <Title>Crown Clothing</Title>
         </LeftNav>
         <RightNav>
-          <StyledLink exact to='/shop'>
+          <StyledLink to='/shop'>
             <RightNavItem>Shop</RightNavItem>
           </StyledLink>
-          <StyledLink exact to='/contact'>
+          <StyledLink to='/contact'>
             <RightNavItem>Contact</RightNavItem>
           </StyledLink>
-          <StyledLink exact to='/signin'>
-            <RightNavItem>Sign In</RightNavItem>
-          </StyledLink>
-          <StyledLink exact to='/cart'>
+
+          {currentUser ? (
+            <StyledLink to='/profile'>
+              <RightNavItem>Profile</RightNavItem>
+            </StyledLink>
+          ) : (
+            <StyledLink to='/signin'>
+              <RightNavItem>Sign In</RightNavItem>
+            </StyledLink>
+          )}
+          <StyledLink to='/cart'>
             <RightNavItem>Cart</RightNavItem>
           </StyledLink>
         </RightNav>
       </Nav>
       <BottomNav>
-        <StyledLink exact to='/'>
+        <StyledLink to='/'>
           <BottomNavItem>
             <BottomImage src={Home} />
             <BottomText>Home</BottomText>
           </BottomNavItem>
         </StyledLink>
-        <StyledLink exact to='/shop'>
+        <StyledLink to='/shop'>
           <BottomNavItem>
             <BottomImage src={Home} />
             <BottomText>Shop</BottomText>
           </BottomNavItem>
         </StyledLink>
-        <StyledLink exact to='/wishlist'>
+        <StyledLink to='/wishlist'>
           <BottomNavItem>
             <BottomImage src={Heart} />
             <BottomText>Wishlist</BottomText>
           </BottomNavItem>
         </StyledLink>
-        <StyledLink exact to='/cart'>
+        <StyledLink to='/cart'>
           <BottomNavItem>
             <BottomImage src={Cart} />
             <BottomText>Cart</BottomText>
           </BottomNavItem>
         </StyledLink>
-        <StyledLink exact to='/signin'>
+        <StyledLink to='/signin'>
           <BottomNavItem>
             <BottomImage src={User} />
             <BottomText>Login</BottomText>
