@@ -6,6 +6,7 @@ import Home from '../../assets/home.svg'
 import Cart from '../../assets/shopping-cart.svg'
 import User from '../../assets/user-circle.svg'
 import Heart from '../../assets/heart.svg'
+import { connect } from 'react-redux'
 
 const Wrapper = styled.div``
 
@@ -101,7 +102,7 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   }
 `
 
-const Header = ({ currentUser }) => {
+const Header = () => {
   return (
     <Wrapper>
       <Nav>
@@ -119,7 +120,7 @@ const Header = ({ currentUser }) => {
             <RightNavItem>Contact</RightNavItem>
           </StyledLink>
 
-          {currentUser ? (
+          {this.props.currentUser ? (
             <StyledLink to='/profile'>
               <RightNavItem>Profile</RightNavItem>
             </StyledLink>
@@ -169,4 +170,8 @@ const Header = ({ currentUser }) => {
   )
 }
 
-export default Header
+const mapStateToProps = state => ({
+  currentUser : state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header)
