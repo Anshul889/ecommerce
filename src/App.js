@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header/Header'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
+import Cart from './pages/Cart/Cart'
 import Homepage from './pages/Homepage/Homepage'
 import Profile from './pages/Profile/Profile'
 import ShopPage from './pages/shop/ShopPage'
@@ -12,7 +13,6 @@ import SignUp from './pages/SignUp/SignUp'
 import { setCurrentUser } from './redux/user/user.action'
 
 class App extends React.Component {
-
   unsubscribeFromAuth = null
 
   componentDidMount() {
@@ -43,14 +43,15 @@ class App extends React.Component {
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
           <Route path='/profile' component={Profile} />
+          <Route path='/cart' component={Cart} />
         </Switch>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-})
+const actions = {
+  setCurrentUser
+}
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(null, actions)(App)

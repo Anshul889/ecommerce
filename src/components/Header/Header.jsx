@@ -102,76 +102,78 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   }
 `
 
-const Header = () => {
-  return (
-    <Wrapper>
-      <Nav>
-        <LeftNav>
-          <Link to='/'>
-            <Logoimg src={Logo} />
-          </Link>
-          <Title>Crown Clothing</Title>
-        </LeftNav>
-        <RightNav>
-          <StyledLink to='/shop'>
-            <RightNavItem>Shop</RightNavItem>
-          </StyledLink>
-          <StyledLink to='/contact'>
-            <RightNavItem>Contact</RightNavItem>
-          </StyledLink>
+class Header extends React.Component {
+  render() {
+    return (
+      <Wrapper>
+        <Nav>
+          <LeftNav>
+            <Link to='/'>
+              <Logoimg src={Logo} />
+            </Link>
+            <Title>Crown Clothing</Title>
+          </LeftNav>
+          <RightNav>
+            <StyledLink to='/shop'>
+              <RightNavItem>Shop</RightNavItem>
+            </StyledLink>
+            <StyledLink to='/contact'>
+              <RightNavItem>Contact</RightNavItem>
+            </StyledLink>
 
-          {this.props.currentUser ? (
-            <StyledLink to='/profile'>
-              <RightNavItem>Profile</RightNavItem>
+            {this.props.currentUser ? (
+              <StyledLink to='/profile'>
+                <RightNavItem>Profile</RightNavItem>
+              </StyledLink>
+            ) : (
+              <StyledLink to='/signin'>
+                <RightNavItem>Sign In</RightNavItem>
+              </StyledLink>
+            )}
+            <StyledLink to='/cart'>
+              <RightNavItem>Cart</RightNavItem>
             </StyledLink>
-          ) : (
-            <StyledLink to='/signin'>
-              <RightNavItem>Sign In</RightNavItem>
-            </StyledLink>
-          )}
-          <StyledLink to='/cart'>
-            <RightNavItem>Cart</RightNavItem>
+          </RightNav>
+        </Nav>
+        <BottomNav>
+          <StyledLink to='/'>
+            <BottomNavItem>
+              <BottomImage src={Home} />
+              <BottomText>Home</BottomText>
+            </BottomNavItem>
           </StyledLink>
-        </RightNav>
-      </Nav>
-      <BottomNav>
-        <StyledLink to='/'>
-          <BottomNavItem>
-            <BottomImage src={Home} />
-            <BottomText>Home</BottomText>
-          </BottomNavItem>
-        </StyledLink>
-        <StyledLink to='/shop'>
-          <BottomNavItem>
-            <BottomImage src={Home} />
-            <BottomText>Shop</BottomText>
-          </BottomNavItem>
-        </StyledLink>
-        <StyledLink to='/wishlist'>
-          <BottomNavItem>
-            <BottomImage src={Heart} />
-            <BottomText>Wishlist</BottomText>
-          </BottomNavItem>
-        </StyledLink>
-        <StyledLink to='/cart'>
-          <BottomNavItem>
-            <BottomImage src={Cart} />
-            <BottomText>Cart</BottomText>
-          </BottomNavItem>
-        </StyledLink>
-        <StyledLink to='/signin'>
-          <BottomNavItem>
-            <BottomImage src={User} />
-            <BottomText>Login</BottomText>
-          </BottomNavItem>
-        </StyledLink>
-      </BottomNav>
-    </Wrapper>
-  )
+          <StyledLink to='/shop'>
+            <BottomNavItem>
+              <BottomImage src={Home} />
+              <BottomText>Shop</BottomText>
+            </BottomNavItem>
+          </StyledLink>
+          <StyledLink to='/wishlist'>
+            <BottomNavItem>
+              <BottomImage src={Heart} />
+              <BottomText>Wishlist</BottomText>
+            </BottomNavItem>
+          </StyledLink>
+          <StyledLink to='/cart'>
+            <BottomNavItem>
+              <BottomImage src={Cart} />
+              <BottomText>Cart</BottomText>
+            </BottomNavItem>
+          </StyledLink>
+          <StyledLink to='/signin'>
+            <BottomNavItem>
+              <BottomImage src={User} />
+              <BottomText>Login</BottomText>
+            </BottomNavItem>
+          </StyledLink>
+        </BottomNav>
+      </Wrapper>
+    )
+  }
 }
 
-const mapStateToProps = state => ({
-  currentUser : state.user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
 })
 
 export default connect(mapStateToProps)(Header)
