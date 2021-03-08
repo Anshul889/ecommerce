@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
-import PreviewCollection from '../../components/previewcollection/PreviewCollection'
+import styled from 'styled-components'
+import Hats from '../../components/Hats/Hats'
+import Sneakers from '../../components/Sneakers/Sneakers'
+
+const Wrapper = styled.div`
+  width: 90%;
+  margin: 20px auto;
+  max-width: 1080px;
+  padding-bottom: 50px;
+`
 
 class ShopPage extends Component {
   state = {
@@ -253,13 +262,11 @@ class ShopPage extends Component {
   }
 
   render() {
-    const { collections } = this.state
     return (
-      <div>
-        {collections.map(({ id, ...otherCollectionProps }) => (
-          <PreviewCollection key={id} {...otherCollectionProps} />
-        ))}
-      </div>
+      <Wrapper>
+        <Hats />
+        <Sneakers />
+      </Wrapper>
     )
   }
 }

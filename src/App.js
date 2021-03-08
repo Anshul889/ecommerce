@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import Cart from './pages/Cart/Cart'
 import Homepage from './pages/Homepage/Homepage'
+import Product from './pages/Product/Product'
 import Profile from './pages/Profile/Profile'
 import ShopPage from './pages/shop/ShopPage'
 import SignIn from './pages/SignIn/SignIn'
@@ -44,6 +45,7 @@ class App extends React.Component {
           <Route path='/signup' component={SignUp} />
           <Route path='/profile' component={Profile} />
           <Route path='/cart' component={Cart} />
+          <Route path='/product/:id' component={Product} />
         </Switch>
       </div>
     )

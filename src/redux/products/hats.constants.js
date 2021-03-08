@@ -1,0 +1,1 @@
+export const FETCH_HATS = 'FETCH_HATS'

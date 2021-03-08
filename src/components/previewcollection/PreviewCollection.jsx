@@ -8,8 +8,6 @@ const Wrapper = styled.div`
   max-width: 1080px;
 `
 
-const Title = styled.h1``
-
 const Preview = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -26,7 +24,6 @@ const Name = styled.span``
 const PreviewCollection = ({ title, items }) => {
   return (
     <Wrapper>
-      <Title>{title.toUpperCase()}</Title>
       <Preview>
         {items
           .filter((item, idx) => idx < 4)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Item = styled.div`
@@ -25,15 +26,22 @@ const Price = styled.span`
 justify-self: end;
 `
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
+
 const CollectionItem = ({id, name, price, imageUrl}) => {
   return (
+    <StyledLink to={`/product/${id}`}>
     <Item>
       <ItemImage src={imageUrl}></ItemImage>
       <Footer>
-        <Name>{name}</Name>
+        <Name>{name}, {id}</Name>
         <Price>{price}</Price>
       </Footer>
     </Item>
+   </StyledLink>
   )
 }
 
