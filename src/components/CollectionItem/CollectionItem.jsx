@@ -37,7 +37,7 @@ const CollectionItem = ({id, name, price, imageUrl}) => {
     <Item>
       <ItemImage src={imageUrl}></ItemImage>
       <Footer>
-        <Name>{name}, {id}</Name>
+        <Name>{name}</Name>
         <Price>{price}</Price>
       </Footer>
     </Item>

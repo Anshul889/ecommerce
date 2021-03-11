@@ -7,6 +7,10 @@ import { Button } from '../../components/CustomButton/Button'
 import firebase from '../../firebase/firebase.utils'
 import { addToCart } from '../../redux/cart/cart.action'
 
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+})
+
 const actions = {
   addToCart,
 }
@@ -36,7 +40,7 @@ class Product extends Component {
       .get()
     const productData = productQuery.data()
     const id = productQuery.id
-    const product = {...productData, id}
+    const product = { ...productData, id }
     this.setState({ product })
     console.log(product)
   }
@@ -48,33 +52,36 @@ class Product extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     const { product, quantity } = this.state
-    console.log(product, quantity)
     this.props.addToCart(product, quantity)
-    console.log('done')
   }
 
   render() {
     return (
       <Wrapper>
         <ItemImage src={this.state.product.imageUrl}></ItemImage>
-        <form onSubmit={this.handleSubmit}>
-          <label for='quantity'>Quantity</label>
-          <select name='quantity' id='quantity' onChange={this.handleChange}>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-          </select>
-          <Button type='submit'>Add to Cart</Button>
-        </form>
+        {this.props.cart.find((x) => x.id === this.state.product.id) && (
+          <div>Added To Cart</div>
+        )}
+        {!this.props.cart.find((x) => x.id === this.state.product.id) && (
+          <form onSubmit={this.handleSubmit}>
+            <label for='quantity'>Quantity</label>
+            <select name='quantity' id='quantity' onChange={this.handleChange}>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+              <option value='7'>7</option>
+              <option value='8'>8</option>
+            </select>
+            <Button type='submit'>Add to Cart</Button>
+          </form>
+        )}
         <div>{this.state.product.price}</div>
       </Wrapper>
     )
   }
 }
 
-export default connect(null, actions)(Product)
+export default connect(mapStateToProps, actions)(Product)
