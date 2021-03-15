@@ -117,8 +117,8 @@ class Header extends React.Component {
             <StyledLink to='/shop'>
               <RightNavItem>Shop</RightNavItem>
             </StyledLink>
-            <StyledLink to='/contact'>
-              <RightNavItem>Contact</RightNavItem>
+            <StyledLink to='/wishlist'>
+              <RightNavItem>Wishlist</RightNavItem>
             </StyledLink>
 
             {this.props.currentUser ? (

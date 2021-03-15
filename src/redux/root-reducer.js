@@ -6,18 +6,20 @@ import hatsReducer from './products/hats.reducer'
 import sneakersReducer from './products/sneakers.reducer'
 
 import userReducer from './user/user.reducer'
+import wishlistReducer from './wishlist/wishlist.reducer'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart']
+  whitelist: ['cart', 'wishlist']
 }
 
 const rootReducer = combineReducers({
   user: userReducer,
   hats: hatsReducer,
   sneakers: sneakersReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  wishlist: wishlistReducer
 })
 
 export default persistReducer(persistConfig, rootReducer)

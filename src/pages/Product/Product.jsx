@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
-import { compose } from 'redux'
 import styled from 'styled-components'
 import { Button } from '../../components/CustomButton/Button'
 import firebase from '../../firebase/firebase.utils'
 import { addToCart } from '../../redux/cart/cart.action'
+import {addToWishlist} from '../../redux/wishlist/wishlist.action'
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
@@ -13,6 +12,7 @@ const mapStateToProps = (state) => ({
 
 const actions = {
   addToCart,
+  addToWishlist
 }
 
 const Wrapper = styled.div`
@@ -78,6 +78,7 @@ class Product extends Component {
             <Button type='submit'>Add to Cart</Button>
           </form>
         )}
+        <Button onClick={() => this.props.addToWishlist(this.state.product)}>ADD TO WISHLIST</Button>
         <div>{this.state.product.price}</div>
       </Wrapper>
     )

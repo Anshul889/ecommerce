@@ -11,6 +11,7 @@ import Profile from './pages/Profile/Profile'
 import ShopPage from './pages/shop/ShopPage'
 import SignIn from './pages/SignIn/SignIn'
 import SignUp from './pages/SignUp/SignUp'
+import WishList from './pages/Wishlist/Wishlist'
 import { setCurrentUser } from './redux/user/user.action'
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
           <Route path='/signup' component={SignUp} />
           <Route path='/profile' component={Profile} />
           <Route path='/cart' component={Cart} />
+          <Route path='/wishlist' component={WishList} />
           <Route path='/product/:id' component={Product} />
         </Switch>
       </div>
